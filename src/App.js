@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Router>
-      <div className={`${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} h-full`}>
+      <div className={`${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} h-[100vh] overflow-scroll no-scrollbar`}>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <main className="flex flex-col lg:flex-row gap-4 w-full lg:pt-2 pt-16 p-6 mx-auto">
           <ProfileCard />
