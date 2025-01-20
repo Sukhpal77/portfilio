@@ -132,7 +132,8 @@ const projects = [
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("description"); // Tabs: description, features, images
+  const [activeTab, setActiveTab] = useState("description");
+  const [previewImage, setPreviewImage] = useState(null);
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -176,6 +177,7 @@ function Projects() {
           </div>
         ))}
       </div>
+
       {/* Modal */}
       {isModalOpen && selectedProject && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
