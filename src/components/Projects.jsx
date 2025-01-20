@@ -176,11 +176,11 @@ function Projects() {
           </div>
         ))}
       </div>
-
       {/* Modal */}
       {isModalOpen && selectedProject && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
-          <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2">
+          {/* Main Modal */}
+          <div className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 max-h-[90%] overflow-auto no-scrollbar">
             <button
               onClick={closeModal}
               className="text-gray-500 dark:text-gray-300 hover:text-red-500 float-right text-xl"
@@ -204,30 +204,30 @@ function Projects() {
             </p>
 
             {/* Tabs */}
-            <div className="flex space-x-4 mb-4">
+            <div className="flex flex-wrap gap-2 mb-4 justify-center sm:justify-start">
               <button
                 onClick={() => setActiveTab("description")}
-                className={`px-4 py-2 font-bold ${activeTab === "description"
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                className={`px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-base ${activeTab === "description"
+                  ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+                  : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
                   } rounded-md`}
               >
                 Description
               </button>
               <button
                 onClick={() => setActiveTab("features")}
-                className={`px-4 py-2 font-bold ${activeTab === "features"
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                className={`px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-base ${activeTab === "features"
+                  ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+                  : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
                   } rounded-md`}
               >
                 Features
               </button>
               <button
                 onClick={() => setActiveTab("images")}
-                className={`px-4 py-2 font-bold ${activeTab === "images"
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                className={`px-3 py-1 sm:px-4 sm:py-2 font-bold text-sm sm:text-base ${activeTab === "images"
+                  ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-white"
+                  : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
                   } rounded-md`}
               >
                 Images
@@ -251,13 +251,31 @@ function Projects() {
                       key={idx}
                       src={image}
                       alt={`${selectedProject.name} screenshot ${idx + 1}`}
-                      className="w-full h-40 object-cover rounded-md"
+                      className="w-full h-40 object-cover rounded-md cursor-pointer"
+                      onClick={() => setPreviewImage(image)} // Set the image for preview
                     />
                   ))}
                 </div>
               )}
             </div>
           </div>
+
+          {/* Image Preview */}
+          {previewImage && (
+            <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-60">
+              <button
+                onClick={() => setPreviewImage(null)} // Close the preview
+                className="absolute top-4 right-4 text-white text-3xl hover:text-red-500"
+              >
+                &times;
+              </button>
+              <img
+                src={previewImage}
+                alt="Preview"
+                className="max-w-full max-h-full rounded-md"
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
