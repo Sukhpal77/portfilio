@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaWhatsapp, FaGithub } from "react-icons/fa";
 import ResumeButton from "./ResumeButton";
 
 function ProfileCard() {
@@ -36,10 +36,12 @@ function ProfileCard() {
         </button>
 
         <button
-          onClick={() => window.open("https://x.com/Sukhpal03758731", "_blank")}
-          className="p-4 rounded-xl bg-gradient-to-r from-blue-400 to-blue-500 text-white shadow-lg hover:opacity-90 transition-all transform hover:scale-110 dark:from-blue-500 dark:to-blue-700 dark:text-gray-200"
+          onClick={() =>
+            window.open("https://wa.me/919991623677?text=Hi%20Sukhpal!", "_blank")
+          }
+          className="p-4 rounded-xl bg-gradient-to-r from-green-400 to-green-600 text-white shadow-lg hover:opacity-90 transition-all transform hover:scale-110 dark:from-green-500 dark:to-green-700 dark:text-gray-200"
         >
-          <FaTwitter />
+          <FaWhatsapp />
         </button>
 
         <button
