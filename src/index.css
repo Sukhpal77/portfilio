@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 /* Animate only accent colors; keep the existing geometry and glow intensity. */
 @property --chromatic-accent {
   syntax: "<color>";
