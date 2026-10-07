@@ -1,0 +1,1 @@
+To revert only the scrollbar redesign, copy this index.css over src/index.css.

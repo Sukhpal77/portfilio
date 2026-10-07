@@ -1,0 +1,1 @@
+Backup taken before adding AWS/IoT demos and rebuilding HRMS. To restore, stop the dev server, extract website-source.zip into a new empty folder, then run npm install and npm run dev there.

@@ -68,9 +68,7 @@
   position: absolute;
   inset: 100% 0 auto;
   box-shadow: 0 20px 32px #00000066;
-  max-height: calc(100dvh - 88px);
 }
-.portfolio-dialog { display: flex; flex-direction: column; max-height: calc(100dvh - 32px); }
 .portfolio-app main :is(.grid, .flex) > * { min-width: 0; }
 .portfolio-app :is(p, h1, h2, h3) { overflow-wrap: break-word; }
 .nav-link {
@@ -356,47 +354,20 @@
   }
 }
 
-/* Shared scrollbar palette for the page, terminal, tabs and demo tables. */
-html {
-  --scroll-thumb: #67d9d2;
-  --scroll-track: #11151d;
+/* Terminal custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-.portfolio-app * {
-  --scroll-thumb: var(--accent, #67d9d2);
-  --scroll-track: #151a23;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e1f25;
 }
-html, .portfolio-app * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #34343a;
+  border-radius: 3px;
 }
-/* Chromium/WebKit use the rounded gradient treatment; Firefox uses the colors above. */
-@supports selector(::-webkit-scrollbar) {
-  html, .portfolio-app * { scrollbar-width: auto; scrollbar-color: auto; }
-  html::-webkit-scrollbar { width: 12px; height: 12px; }
-  .portfolio-app *::-webkit-scrollbar { width: 8px; height: 8px; }
-  html::-webkit-scrollbar-track, .portfolio-app *::-webkit-scrollbar-track {
-    background: var(--scroll-track);
-    border-radius: 20px;
-  }
-  html::-webkit-scrollbar-thumb, .portfolio-app *::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #4edea3, #67d9f5 55%, #c4a5ff);
-    border: 3px solid var(--scroll-track);
-    border-radius: 20px;
-    min-height: 44px;
-    min-width: 32px;
-  }
-  .portfolio-app *::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--scroll-thumb), color-mix(in srgb, var(--scroll-thumb) 60%, #c4a5ff));
-    border-width: 2px;
-  }
-  html::-webkit-scrollbar-thumb:hover, .portfolio-app *::-webkit-scrollbar-thumb:hover {
-    background: var(--scroll-thumb);
-  }
-  html::-webkit-scrollbar-corner, .portfolio-app *::-webkit-scrollbar-corner { background: var(--scroll-track); }
-  html::-webkit-scrollbar-button, .portfolio-app *::-webkit-scrollbar-button { display: none; }
-}
-@media (forced-colors: active) {
-  html, .portfolio-app * { scrollbar-color: auto; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4edea3;
 }
 
 /* Compact demo workspaces: panels follow their content instead of a fixed height. */
@@ -488,3 +459,4 @@ html, .portfolio-app * {
   .lab-resource { padding: 10px 8px; gap: 6px; }
   .lab-resource strong { font-size: 11px; }
 }
+.lab-tabs { scrollbar-width: thin; scrollbar-color: #34343a #181a22; }

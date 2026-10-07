@@ -1,0 +1,8 @@
+This archive contains the website source and configuration immediately before moving demos into The Systems Lab.
+
+To revert:
+1. Stop the development server.
+2. Extract website-source.zip into a NEW empty folder.
+3. Open a terminal in that folder and run npm install, then npm run dev.
+
+Using a new folder gives an exact source restore, including the absence of files added after this backup. Keep the current website folder until you have checked the restored version.
