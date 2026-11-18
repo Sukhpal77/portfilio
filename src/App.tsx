@@ -14,8 +14,8 @@ import { EducationAndResumeSection } from './components/EducationAndResumeSectio
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
-import { ContactModal } from './components/ContactModal';
 import { NAV_SECTIONS } from './data/navigation';
+import { openEmailApp } from './data/contact';
 import { useScrollReveals } from './hooks/useScrollReveals';
 import { DemoId } from './data/demos';
 
@@ -23,7 +23,8 @@ export default function App() {
   useScrollReveals();
   const [activeSection, setActiveSection] = useState('home');
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
-  const [contactModalOpen, setContactModalOpen] = useState(false);
+  // No mail backend on Vercel: "contact" simply opens the visitor's email app.
+  const handleOpenContact = () => openEmailApp();
   const [activeDemo, setActiveDemo] = useState<DemoId>('pipeline');
   const navigationTarget = useRef<string | null>(null);
   const navigationTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -104,14 +105,13 @@ export default function App() {
       <Navbar
         activeSection={activeSection}
         onNavigate={handleNavigate}
-        onOpenContact={() => setContactModalOpen(true)}
+        onOpenContact={handleOpenContact}
       />
 
       {/* Main Content Area */}
       <main className="page-container pt-[72px] flex-1">
         <HeroSection
-          onOpenResume={() => setResumeModalOpen(true)}
-          onOpenContact={() => setContactModalOpen(true)}
+          onOpenContact={handleOpenContact}
           onSelectProject={() => handleNavigate('projects')}
         />
 
@@ -139,9 +139,7 @@ export default function App() {
           onOpenResumeModal={() => setResumeModalOpen(true)}
         />
 
-        <ContactSection
-          onOpenContactModal={() => setContactModalOpen(true)}
-        />
+        <ContactSection />
       </main>
 
       {/* Footer */}
@@ -151,11 +149,6 @@ export default function App() {
       <ResumeModal
         isOpen={resumeModalOpen}
         onClose={() => setResumeModalOpen(false)}
-      />
-
-      <ContactModal
-        isOpen={contactModalOpen}
-        onClose={() => setContactModalOpen(false)}
       />
     </div>
   );

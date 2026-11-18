@@ -1,4 +1,5 @@
 import React from 'react';
+import { RESUME_FILENAME, RESUME_URL } from '../data/contact';
 
 interface EducationAndResumeSectionProps {
   onOpenResumeModal: () => void;
@@ -114,24 +115,34 @@ export const EducationAndResumeSection: React.FC<EducationAndResumeSectionProps>
               </span>
               <div className="flex flex-col">
                 <span className="text-[#e3e1e9] font-medium">
-                  Sukhpal_Singh_Resume.pdf
+                  {RESUME_FILENAME}
                 </span>
                 <span className="text-[#bbcabf] text-[10px]">
-                  2.4 MB · Updated for Senior & AI Roles
+                  PDF · Updated for Senior & AI Roles
                 </span>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-2 pt-6">
-            <button
-              onClick={onOpenResumeModal}
+            <a
+              href={RESUME_URL}
+              download={RESUME_FILENAME}
               className="w-full inline-flex items-center justify-center gap-2 bg-[var(--accent)] text-[#071722] text-sm font-semibold py-2.5 rounded shadow-[0_0_20px_color-mix(in_srgb,var(--accent)_30%,transparent)] hover:bg-[var(--accent-soft)] hover:text-[#071722] transition-all"
             >
               <span className="material-symbols-outlined text-[18px]">
                 download
               </span>
-              <span>View & Download Official Resume</span>
+              <span>Download Official Resume (PDF)</span>
+            </a>
+            <button
+              onClick={onOpenResumeModal}
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#292a2f] hover:bg-[#34343a] border border-white/[0.06] text-[#e3e1e9] text-xs py-2 rounded transition-colors"
+            >
+              <span className="material-symbols-outlined text-[16px]">
+                visibility
+              </span>
+              <span>Quick Preview</span>
             </button>
             <span className="font-mono text-[10px] text-center text-[#bbcabf]">
               Confidential verification references available upon request

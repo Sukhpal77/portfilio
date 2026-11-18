@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
+import { CONTACT_EMAIL, buildMailto } from '../data/contact';
 
-interface ContactSectionProps {
-  onOpenContactModal: () => void;
-}
-
-export const ContactSection: React.FC<ContactSectionProps> = ({
-  onOpenContactModal,
-}) => {
+export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const email = 'sukhpalsingh0333@gmail.com';
+  const email = CONTACT_EMAIL;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email).then(() => {
@@ -74,7 +69,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
             <div className="flex flex-col gap-2">
               <a
-                href={`mailto:${email}?subject=Collaboration%20Inquiry%20-%20Sukhpal%20Singh`}
+                href={buildMailto('Collaboration Inquiry - Sukhpal Singh')}
                 className="inline-flex items-center justify-between bg-[var(--accent)] text-[#071722] text-xs font-semibold px-4 py-2.5 rounded shadow-[0_0_16px_color-mix(in_srgb,var(--accent)_25%,transparent)] hover:bg-[var(--accent-soft)] transition-all"
               >
                 <span className="flex items-center gap-2">
@@ -86,18 +81,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <span className="font-mono text-xs">→</span>
               </a>
 
-              <button
-                onClick={onOpenContactModal}
+              <a
+                href={buildMailto(
+                  'Project Inquiry - Sukhpal Singh',
+                  'Hi Sukhpal,\n\nI would like to discuss:\n\n- Project / role: \n- Timeline: \n- Details: \n\nThanks,\n',
+                )}
                 className="inline-flex items-center justify-between bg-[#292a2f] hover:bg-[#34343a] border border-white/[0.04] text-[#e3e1e9] text-xs px-4 py-2.5 rounded transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[18px]">
                     chat
                   </span>
-                  <span>Send Direct Message (Instant)</span>
+                  <span>Send Project Inquiry</span>
                 </span>
                 <span className="font-mono text-xs text-[color:var(--accent)]">↗</span>
-              </button>
+              </a>
 
               <a
                 href="https://linkedin.com/in/sukhpalsingh"

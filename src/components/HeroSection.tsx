@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { ROLES, SYSTEM_NODES } from '../data/portfolioData';
 import { SystemNode } from '../types';
 import { PipelineConnector } from './PipelineConnector';
+import { RESUME_FILENAME, RESUME_URL } from '../data/contact';
 
 interface HeroSectionProps {
-  onOpenResume: () => void;
   onOpenContact: () => void;
   onSelectProject: (projectId: string) => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  onOpenResume,
   onOpenContact,
   onSelectProject,
 }) => {
@@ -118,8 +117,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span className="font-mono text-xs">→</span>
               </a>
 
-              <button
-                onClick={onOpenResume}
+              <a
+                href={RESUME_URL}
+                download={RESUME_FILENAME}
                 className="inline-flex items-center gap-2 bg-[#292a2f] text-[#e3e1e9] hover:text-[color:var(--accent)] border border-white/[0.08] hover:border-[var(--accent)]/40 text-sm px-4 py-2.5 rounded transition-all hover:bg-[#34343a]"
               >
                 <span className="material-symbols-outlined text-[18px]">description</span>
@@ -127,7 +127,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span className="font-mono text-[11px] bg-[#1e1f25] px-1.5 py-0.5 rounded text-[#bbcabf]">
                   PDF
                 </span>
-              </button>
+              </a>
 
               <div className="flex items-center gap-1 pl-1">
                 <a
@@ -150,7 +150,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </a>
                 <button
                   onClick={onOpenContact}
-                  title="Direct Message"
+                  title="Send Email"
                   className="p-2 text-[#bbcabf] hover:text-[color:var(--accent)] hover:bg-[#292a2f] rounded transition-colors"
                 >
                   <span className="material-symbols-outlined text-[20px]">mail</span>

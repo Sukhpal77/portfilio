@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACT_EMAIL, RESUME_FILENAME, RESUME_URL } from '../data/contact';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -7,10 +8,6 @@ interface ResumeModalProps {
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
@@ -30,15 +27,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrint}
+            <a
+              href={RESUME_URL}
+              download={RESUME_FILENAME}
               className="inline-flex items-center gap-1.5 bg-[var(--accent)] text-[#071722] font-semibold text-xs px-3 py-1.5 rounded hover:bg-[var(--accent-soft)] transition-all"
             >
               <span className="material-symbols-outlined text-[16px]">
-                print
+                download
               </span>
-              <span>Print / Save PDF</span>
-            </button>
+              <span>Download PDF</span>
+            </a>
             <button
               onClick={onClose}
               aria-label="Close résumé dialog"
@@ -64,7 +62,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </p>
             </div>
             <div className="font-mono text-[11px] text-[#bbcabf] flex flex-col md:items-end">
-              <span>Email: sukhpalsingh0333@gmail.com</span>
+              <span>Email: {CONTACT_EMAIL}</span>
               <span>Location: Punjab, India (Remote Available)</span>
               <span>Timezone: IST (UTC+5:30)</span>
             </div>
